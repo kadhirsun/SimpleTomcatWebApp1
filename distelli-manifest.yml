@@ -10,6 +10,7 @@ kadhirsun/SimpleTomcatWebApp1:
     - echo "DD_USERNAME- $DISTELLI_DOCKER_USERNAME"
     - echo "DD_EMAIL-    $DISTELLI_DOCKER_EMAIL"
     - echo "DD_ENDPOINT- $DISTELLI_DOCKER_ENDPOINT"
+    #- echo "DD_PORTS-    $DISTELLI_DOCKER_PORTS"
     - mvn package
     ### Docker Build Commands ###
     - docker login -u "$DISTELLI_DOCKER_USERNAME" -p "$DISTELLI_DOCKER_PW" -e "$DISTELLI_DOCKER_EMAIL" $DISTELLI_DOCKER_ENDPOINT
@@ -25,6 +26,7 @@ kadhirsun/SimpleTomcatWebApp1:
     - echo "DD_USERNAME- $DISTELLI_DOCKER_USERNAME"
     - echo "DD_EMAIL-    $DISTELLI_DOCKER_EMAIL"
     - echo "DD_ENDPOINT- $DISTELLI_DOCKER_ENDPOINT"
+    #- echo "DD_PORTS-    $DISTELLI_DOCKER_PORTS"    
     ### Docker Pre Install Commands ###
     #- sudo docker login -u "$DISTELLI_DOCKER_USERNAME" -p "$DISTELLI_DOCKER_PW" $DISTELLI_DOCKER_ENDPOINT
     - sudo /usr/bin/docker login -u "$DISTELLI_DOCKER_USERNAME" -p "$DISTELLI_DOCKER_PW" -e "$DISTELLI_DOCKER_EMAIL" "$DISTELLI_DOCKER_ENDPOINT"
@@ -32,6 +34,7 @@ kadhirsun/SimpleTomcatWebApp1:
 
   PostInstall:
     - publicip=$(curl -s ident.me) 
+    - echo "Public IP $publicip"
     - echo ""
     - 'echo "You can validate the install by pointing your browser at http://$publicip/SimpleTomcatWebApp1"'
     - echo ""
