@@ -37,6 +37,8 @@ kadhirsun/SimpleTomcatWebApp1:
   PostInstall:
     - publicip=$(curl -s ident.me) 
     - echo "Public IP $publicip"
+    - 'sudo cp -f ./target/*.war $CATALINA_HOME/webapps/'
+    - sudo service tomcat7 restart
     - echo ""
     - 'echo "You can validate the install by pointing your browser at http://$publicip/SimpleTomcatWebApp1"'
     - echo ""
